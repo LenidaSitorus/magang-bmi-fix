@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meeting Klien</title>
+    <link href="/src/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-gray-100">
+    <!-- Sidebar -->
+    <div
+      class="fixed top-0 left-0 w-64 h-screen bg-blue-950 text-white flex flex-col items-center py-7 shadow-md z-50"
+    >
+      <div class="relative mb-4">
+        <img
+          alt="Profile picture"
+          class="rounded-full w-24 h-24"
+          src="/gambar/profile.jpg"
+          width="100"
+          height="100"
+        />
+        <a
+          href="profile.html"
+          class="absolute bottom-0 right-0 bg-white rounded-full p-2 flex items-center justify-center w-8 h-8"
+        >
+          <i class="fas fa-pencil-alt text-yellow-600"></i>
+        </a>
+      </div>
+      <div class="text-center mb-8">
+        <p class="text-lg">Nama</p>
+        <p class="text-sm">Email</p>
+      </div>
+      <div class="w-full">
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="dashboard.html"
+        >
+          <i class="fas fa-th-large ml-3"></i>
+          <span class="text-base">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="project.html"
+        >
+          <i class="fas fa-folder ml-3"></i>
+          <span class="text-base">Project</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 bg-gray-200 text-gray-800 w-full space-x-4"
+          href="meeting.html"
+        >
+          <i class="fas fa-users ml-3"></i>
+          <span class="text-base">Meeting</span>
+        </a>
+      </div>
+      <div class="mt-auto w-full">
+        <a
+          class="flex items-center px-4 py-2 hover:bg-blue-700 w-full max-w-xs justify-center"
+          href="login.html"
+        >
+          <i class="fas fa-sign-out-alt mr-3"></i>
+          <span>Log Out</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div
+      class="fixed top-0 left-64 right-0 h-20 bg-white shadow-md flex items-center justify-between px-5 z-50"
+    >
+      <img src="/gambar/LOGO BMI.png" alt="BMI Logo" class="h-20" />
+      <div class="flex items-center space-x-5">
+        <a href="listuser.html" class="focus:outline-none">
+          <i class="fas fa-user-plus text-xl"></i>
+        </a>
+        <div class="relative">
+          <button id="notificationButton" class="relative focus:outline-none">
+            <i class="fas fa-bell text-xl"></i>
+            <span
+              class="absolute top-0 right-0 bg-red-500 text-xs text-white rounded-full w-5 h-5 flex items-center justify-center"
+            >
+              3
+            </span>
+          </button>
+          <div
+            id="notificationDropdown"
+            class="hidden absolute right-0 mt-2 w-64 bg-white text-gray-700 shadow-lg rounded-lg z-50 max-h-64 overflow-y-auto"
+          >
+            <div class="p-4">
+              <h3 class="font-bold mb-2">Notifikasi</h3>
+              <ul>
+                <li class="py-2 border-b">
+                  Anda baru ditugaskan di
+                  <strong class="text-blue-500">Proyek A</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Proyek <strong class="text-blue-500">B</strong> telah selesai
+                </li>
+                <li class="py-2 border-b">
+                  Tugas di
+                  <strong class="text-blue-500">Proyek C</strong> diperbarui
+                </li>
+                <li class="py-2 border-b">
+                  Pembaruan dalam
+                  <strong class="text-blue-500">Proyek D</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Anda baru ditugaskan di
+                  <strong class="text-blue-500">Proyek E</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Proyek <strong class="text-blue-500">F</strong> selesai tepat
+                  waktu
+                </li>
+                <li class="py-2 border-b">
+                  Tugas di
+                  <strong class="text-blue-500">Proyek G</strong> diperbarui
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <a href="/help" class="focus:outline-none">
+          <i class="fas fa-question-circle text-xl"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="ml-64 mt-20 p-6">
+      <div class="flex flex-col">
+        <h1 class="text-3xl font-bold mb-4">Meeting</h1>
+
+        <div class="flex justify-end mb-8">
+          <button
+            class="bg-blue-900 hover:bg-blue-600 text-white rounded-lg px-6 py-2 flex items-center space-x-2"
+            onclick="openModal()"
+          >
+            <i class="fas fa-plus"></i>
+            <span>Buat baru</span>
+          </button>
+        </div>
+
+        <!-- Search Section with Dark Blue Background -->
+        <div class="flex justify-center mb-6 bg-blue-900 p-4 rounded-lg">
+          <div class="flex space-x-4">
+            <input
+              type="text"
+              id="searchProject"
+              placeholder="Cari Project"
+              class="px-4 py-2 border rounded-lg bg-white text-gray-700"
+              oninput="filterTable()"
+            />
+            <input
+              type="text"
+              id="searchUser"
+              placeholder="Cari User"
+              class="px-4 py-2 border rounded-lg bg-white text-gray-700"
+              oninput="filterTable()"
+            />
+            <input
+              type="date"
+              id="searchDate"
+              class="px-4 py-2 border rounded-lg bg-white text-gray-700"
+              oninput="filterTable()"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Table -->
+      <div class="border rounded-lg overflow-hidden bg-white">
+        <table class="min-w-full bg-white">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="py-2 px-4 text-left">ID</th>
+              <th class="py-2 px-4 text-left">Project</th>
+              <th class="py-2 px-4 text-left">User</th>
+              <th class="py-2 px-4 text-left">Tanggal Meeting</th>
+              <th class="py-2 px-4 text-left">Jam Mulai</th>
+              <th class="py-2 px-4 text-left">Keterangan</th>
+              <th class="py-2 px-4 text-left">Upload Daftar Hadir</th>
+              <th class="py-2 px-4 text-left">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="projectTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Modal Create -->
+      <div
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50"
+        id="modal"
+        onclick="closeModal(event)"
+      >
+        <div
+          class="bg-white p-6 rounded-lg w-96 relative"
+          style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          "
+          onclick="event.stopPropagation();"
+        >
+          <h2 class="text-2xl mb-4" id="modalTitle">Buat Meeting Baru</h2>
+          <div class="mb-4">
+            <label for="project" class="block mb-2">Project</label>
+            <select
+              id="project"
+              class="border px-4 py-2 rounded-lg w-full"
+              onchange="updateUsers()"
+            >
+              <option value="">Pilih Project</option>
+              <option value="1">Project A</option>
+              <option value="2">Project B</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="block mb-2">User</label>
+            <div id="userCheckboxes" class="flex flex-col"></div>
+          </div>
+          <div class="mb-4">
+            <label for="date" class="block mb-2">Tanggal</label>
+            <input
+              type="date"
+              id="date"
+              class="border px-4 py-2 rounded-lg w-full"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="startTime" class="block mb-2">Jam Mulai</label>
+            <input
+              type="time"
+              id="startTime"
+              class="border px-4 py-2 rounded-lg w-full"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="keterangan" class="block mb-2">Keterangan</label>
+            <textarea
+              id="keterangan"
+              class="border px-4 py-2 rounded-lg w-full"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="mb-4">
+            <label for="uploadDaftarHadir" class="block mb-2"
+              >Upload Daftar Hadir (Opsional)</label
+            >
+            <input
+              type="file"
+              id="uploadDaftarHadir"
+              class="border px-4 py-2 rounded-lg w-full"
+            />
+          </div>
+          <div class="flex justify-end">
+            <button
+              class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-4 py-2 mr-2"
+              onclick="saveMeeting()"
+            >
+              Simpan
+            </button>
+            <button
+              class="bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg px-4 py-2"
+              onclick="closeModal()"
+            >
+              Batal
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <script src="/javascript/meeting.js"></script>
+    </div>
+  </body>
+</html>

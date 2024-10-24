@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timeline</title>
+    <link href="/src/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      .timeline-bar {
+        display: inline-block;
+        height: 30px;
+        border-radius: 8px;
+        color: white;
+        text-align: right;
+        padding-right: 8px;
+        line-height: 30px;
+        position: absolute;
+      }
+
+      .calendar-day {
+        min-width: 40px; /* Ensures all days have consistent width */
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .horizontal-scroll {
+        overflow-x: auto; /* Enable horizontal scroll */
+        white-space: nowrap; /* Prevent line breaks */
+      }
+
+      .timeline-controls {
+        display: flex;
+        justify-content: center; /* Center the navigation buttons */
+        align-items: center; /* Align vertically */
+        margin: 10px 0; /* Add some margin for spacing */
+      }
+
+      .timeline-controls button {
+        background: none; /* Remove default button background */
+        border: none; /* Remove border */
+        cursor: pointer; /* Change cursor to pointer */
+        font-size: 1.5rem; /* Adjust icon size */
+        color: #4a5568; /* Change icon color */
+        margin: 0 10px; /* Spacing between icons and text */
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100">
+    <div
+      class="fixed top-0 left-0 w-64 h-screen bg-blue-950 text-white flex flex-col items-center py-7 shadow-md z-50"
+    >
+      <div class="relative mb-4">
+        <img
+          alt="Profile picture"
+          class="rounded-full w-24 h-24"
+          src="/gambar/profile.jpg"
+          width="100"
+          height="100"
+        />
+        <a
+          href="profile.html"
+          class="absolute bottom-0 right-0 bg-white rounded-full p-2 flex items-center justify-center w-8 h-8"
+        >
+          <i class="fas fa-pencil-alt text-yellow-600"></i>
+        </a>
+      </div>
+      <div class="text-center mb-8">
+        <p class="text-lg">Nama</p>
+        <p class="text-sm">Email</p>
+      </div>
+      <div class="w-full">
+        <a
+          class="flex items-center px-4 py-2 mt-2 bg-gray-200 text-gray-800 w-full space-x-4"
+          href="/atasan/atasandashboard.html"
+        >
+          <i class="fas fa-th-large ml-3"></i>
+          <span class="text-base">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="/atasan/project.html"
+        >
+          <i class="fas fa-folder ml-3"></i>
+          <span class="text-base">Project</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="/atasan/atasanactivityplan.html"
+        >
+          <i class="fas fa-calendar-check ml-3"></i>
+          <span class="text-base">Activity Plan</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="/atasan/report.html"
+        >
+          <i class="fas fa-file-alt ml-3"></i>
+          <span class="text-base">Report</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="/atasan/lt_support.html"
+        >
+          <i class="fas fa-clock ml-3"></i>
+          <span class="text-base">Leadtime</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="meeting.html"
+        >
+          <i class="fas fa-users ml-3"></i>
+          <span class="text-base">Meeting</span>
+        </a>
+      </div>
+      <div class="mt-auto w-full">
+        <a
+          class="flex items-center px-4 py-2 hover:bg-blue-700 w-full max-w-xs justify-center"
+          href="login.html"
+        >
+          <i class="fas fa-sign-out-alt mr-3"></i>
+          <span>Log Out</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div
+      class="fixed top-0 left-64 right-0 h-20 bg-white shadow-md flex items-center justify-between px-5 z-50"
+    >
+      <img src="/gambar/LOGO BMI.png" alt="BMI Logo" class="h-20" />
+      <div class="flex items-center space-x-5">
+        <a href="listuser.html" class="focus:outline-none">
+          <i class="fas fa-user-plus text-xl"></i>
+        </a>
+        <div class="relative">
+          <button id="notificationButton" class="relative focus:outline-none">
+            <i class="fas fa-bell text-xl"></i>
+            <span
+              class="absolute top-0 right-0 bg-red-500 text-xs text-white rounded-full w-5 h-5 flex items-center justify-center"
+            >
+              3
+            </span>
+          </button>
+          <div
+            id="notificationDropdown"
+            class="hidden absolute right-0 mt-2 w-64 bg-white text-gray-700 shadow-lg rounded-lg z-50 max-h-64 overflow-y-auto"
+          >
+            <div class="p-4">
+              <h3 class="font-bold mb-2">Notifikasi</h3>
+              <ul>
+                <li class="py-2 border-b">
+                  Anda baru ditugaskan di
+                  <strong class="text-blue-500">Proyek A</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Proyek <strong class="text-blue-500">B</strong> telah selesai
+                </li>
+                <li class="py-2 border-b">
+                  Tugas di
+                  <strong class="text-blue-500">Proyek C</strong> diperbarui
+                </li>
+                <li class="py-2 border-b">
+                  Pembaruan dalam
+                  <strong class="text-blue-500">Proyek D</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Anda baru ditugaskan di
+                  <strong class="text-blue-500">Proyek E</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Proyek <strong class="text-blue-500">F</strong> selesai tepat
+                  waktu
+                </li>
+                <li class="py-2 border-b">
+                  Tugas di
+                  <strong class="text-blue-500">Proyek G</strong> diperbarui
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <a href="/help" class="focus:outline-none">
+          <i class="fas fa-question-circle text-xl"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="ml-64 mt-20 p-6">
+      <div class="flex flex-col">
+        <h1 class="text-3xl font-bold mb-4">Timeline Proyek</h1>
+        <div class="flex space-x-8 mt-2 mb-4">
+          <!-- Menambahkan mb-4 disini -->
+          <a href="dashboard.html" class="pb-2">Overview</a>
+          <a href="roadmap.html" class="pb-2">Roadmap</a>
+          <a
+            href="timeline.html"
+            class="pb-2 border-b-2 border-blue-600 cursor-pointer"
+            >Timeline</a
+          >
+        </div>
+        <select
+          id="projectFilter"
+          class="mb-4 p-2 border border-gray-300 rounded"
+        >
+          <option value="all">Semua Proyek</option>
+          <option value="project1">Proyek 1</option>
+          <option value="project2">Proyek 2</option>
+          <option value="project3">Proyek 3</option>
+        </select>
+
+        <table class="min-w-full bg-white">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">Nama Activity Plan</th>
+              <th class="py-2 px-4 border-b">Deskripsi Activity Plan</th>
+              <th class="py-2 px-4" colspan="31">Timeline</th>
+              <!-- Adjusted colspan for calendar days -->
+            </tr>
+            <tr>
+              <th class="py-2 px-4 border-b"></th>
+              <th class="py-2 px-4 border-b"></th>
+              <th class="py-2 px-4 border-b" colspan="31">
+                <div class="timeline-controls">
+                  <!-- Navigation for Month -->
+                  <button id="prevMonthBtn" class="p-2">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <div id="monthDisplay" class="font-bold text-lg mx-4">
+                    October 2024
+                  </div>
+                  <button id="nextMonthBtn" class="p-2">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+                <div class="horizontal-scroll">
+                  <div id="daysRow" class="flex"></div>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="activityPlanTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="/javascript/timeline.js"></script>
+  </body>
+</html>

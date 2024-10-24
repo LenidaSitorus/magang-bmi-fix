@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link href="/src/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+
+  <body class="bg-gray-100">
+    <!-- Sidebar -->
+    <div
+      class="fixed top-0 left-0 w-64 h-screen bg-blue-950 text-white flex flex-col items-center py-7 shadow-md z-50"
+    >
+      <div class="relative mb-4">
+        <img
+          alt="Profile picture"
+          class="rounded-full w-24 h-24"
+          src="/gambar/profile.jpg"
+          width="100"
+          height="100"
+        />
+        <a
+          href="profile.html"
+          class="absolute bottom-0 right-0 bg-white rounded-full p-2 flex items-center justify-center w-8 h-8"
+        >
+          <i class="fas fa-pencil-alt text-yellow-600"></i>
+        </a>
+      </div>
+      <div class="text-center mb-8">
+        <p class="text-lg">Nama</p>
+        <p class="text-sm">Email</p>
+      </div>
+      <div class="w-full">
+        <a
+          class="flex items-center px-4 py-2 mt-2 bg-gray-200 text-gray-800 w-full space-x-4"
+          href="dashboard.html"
+        >
+          <i class="fas fa-th-large ml-3"></i>
+          <span class="text-base">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="project.html"
+        >
+          <i class="fas fa-folder ml-3"></i>
+          <span class="text-base">Project</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="activityplan.html"
+        >
+          <i class="fas fa-calendar-check ml-3"></i>
+          <span class="text-base">Activity Plan</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="report.html"
+        >
+          <i class="fas fa-file-alt ml-3"></i>
+          <span class="text-base">Report</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="lt_support.html"
+        >
+          <i class="fas fa-clock ml-3"></i>
+          <span class="text-base">Leadtime</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="meeting.html"
+        >
+          <i class="fas fa-users ml-3"></i>
+          <span class="text-base">Meeting</span>
+        </a>
+      </div>
+      <div class="mt-auto w-full">
+        <a
+          class="flex items-center px-4 py-2 hover:bg-blue-700 w-full max-w-xs justify-center"
+          href="login.html"
+        >
+          <i class="fas fa-sign-out-alt mr-3"></i>
+          <span>Log Out</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div
+      class="fixed top-0 left-64 right-0 h-20 bg-white shadow-md flex items-center justify-between px-6 z-50"
+    >
+      <img src="/gambar/logobmi.png" alt="BMI Logo" class="h-16" />
+      <div class="flex items-center space-x-5">
+        <a href="listuser.html" class="focus:outline-none">
+          <i class="fas fa-user-plus text-xl"></i>
+        </a>
+        <div class="relative">
+          <button id="notificationButton" class="relative focus:outline-none">
+            <i class="fas fa-bell text-xl"></i>
+
+            <!-- Badge notifikasi -->
+            <span
+              class="absolute top-0 right-0 bg-red-500 text-xs text-white rounded-full w-5 h-5 flex items-center justify-center"
+              >3</span
+            >
+          </button>
+
+          <!-- Dropdown Notifikasi -->
+          <div
+            id="notificationDropdown"
+            class="hidden absolute right-0 mt-2 w-64 bg-white text-gray-700 shadow-lg rounded-lg z-50 max-h-64 overflow-y-auto"
+          >
+            <div class="p-4">
+              <h3 class="font-bold mb-2">Notifikasi</h3>
+              <ul>
+                <li class="py-2 border-b">
+                  Anda baru ditugaskan di
+                  <strong class="text-blue-500">Proyek A</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Proyek <strong class="text-blue-500">B</strong> telah selesai
+                </li>
+                <li class="py-2 border-b">
+                  Tugas di
+                  <strong class="text-blue-500">Proyek C</strong> diperbarui
+                </li>
+                <li class="py-2 border-b">
+                  Pembaruan dalam
+                  <strong class="text-blue-500">Proyek D</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Anda baru ditugaskan di
+                  <strong class="text-blue-500">Proyek E</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Proyek <strong class="text-blue-500">F</strong> selesai tepat
+                  waktu
+                </li>
+                <li class="py-2 border-b">
+                  Tugas di
+                  <strong class="text-blue-500">Proyek G</strong> diperbarui
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <a href="/help" class="focus:outline-none">
+          <i class="fas fa-question-circle text-xl"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="ml-64 mt-20 p-6">
+      <div class="flex flex-col">
+        <!-- Page Title -->
+        <h1 class="text-3xl font-bold mb-4">Dashboard</h1>
+
+        <!-- Kalender -->
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Kalender -->
+          <div class="bg-white p-2 rounded shadow" style="height: 300px">
+            <!-- Kalender Header -->
+            <div
+              class="flex justify-between items-center mb-2 bg-blue-950 p-2 rounded-t"
+            >
+              <!-- Tombol navigasi bulan sebelumnya -->
+              <i
+                id="prevMonth"
+                class="fas fa-caret-left text-gray-200 cursor-pointer"
+              ></i>
+
+              <!-- Nama Bulan dan Tahun -->
+              <h2 id="monthYear" class="font-semibold text-md text-white"></h2>
+
+              <!-- Tombol navigasi bulan berikutnya -->
+              <i
+                id="nextMonth"
+                class="fas fa-caret-right text-gray-200 cursor-pointer"
+              ></i>
+            </div>
+
+            <!-- Tabel Kalender -->
+            <div style="overflow-y: hidden; height: 240px">
+              <table class="w-full text-center table-fixed h-full text-sm">
+                <thead>
+                  <tr class="bg-yellow-500 text-white">
+                    <th class="py-1">Sun</th>
+                    <th class="py-1">Mon</th>
+                    <th class="py-1">Tue</th>
+                    <th class="py-1">Wed</th>
+                    <th class="py-1">Thu</th>
+                    <th class="py-1">Fri</th>
+                    <th class="py-1">Sat</th>
+                  </tr>
+                </thead>
+                <tbody id="calendarBody" class="h-full"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Aktivitas Saya -->
+          <div
+            class="bg-white p-4 rounded-lg shadow-lg relative"
+            style="height: 300px"
+          >
+            <div
+              class="bg-blue-950 p-2 rounded mb-2 flex justify-between items-center"
+            >
+              <h2 class="font-bold text-white mb-0">Aktivitas Saya</h2>
+              <div class="mb-0">
+                <label for="projectFilter" class="text-gray-600 hidden"
+                  >Filter by Project:</label
+                >
+                <select
+                  id="projectFilter"
+                  class="bg-white-100 border border-white-300 rounded p-1"
+                  onchange="filterActivitiesByProject()"
+                >
+                  <option value="all">All</option>
+                  <option value="project1">Project A</option>
+                  <option value="project2">Project B</option>
+                  <option value="project3">Project C</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="flex flex-col" id="activityList">
+              <!-- Aktivitas 1 -->
+              <div
+                class="flex items-center mb-1 border-b pb-1 activity"
+                data-project="project1"
+              >
+                <input class="mr-1" type="checkbox" />
+                <div class="flex-1">
+                  <p class="text-sm md:text-base">Activity 1</p>
+                  <p class="text-gray-500 text-xs md:text-sm">
+                    Today til 11:00 am
+                  </p>
+                </div>
+                <p class="text-gray-500 text-xs md:text-sm">Project A</p>
+                <img
+                  alt="User profile picture"
+                  class="rounded-full w-6 h-6 ml-1"
+                  src="/gambar/profile.jpg"
+                  width="24"
+                  height="24"
+                />
+              </div>
+
+              <!-- Aktivitas 2 -->
+              <div
+                class="flex items-center mb-1 border-b pb-1 activity"
+                data-project="project2"
+              >
+                <input class="mr-1" type="checkbox" />
+                <div class="flex-1">
+                  <p class="text-sm md:text-base">Activity 2</p>
+                  <p class="text-gray-500 text-xs md:text-sm">
+                    Today til 11:00 am
+                  </p>
+                </div>
+                <p class="text-gray-500 text-xs md:text-sm">Project B</p>
+                <img
+                  alt="User profile picture"
+                  class="rounded-full w-6 h-6 ml-1"
+                  src="/gambar/profile.jpg"
+                  width="24"
+                  height="24"
+                />
+              </div>
+
+              <!-- Aktivitas 3 -->
+              <div
+                class="flex items-center mb-1 border-b pb-1 activity"
+                data-project="project3"
+              >
+                <input class="mr-1" type="checkbox" />
+                <div class="flex-1">
+                  <p class="text-sm md:text-base">Activity 3</p>
+                  <p class="text-gray-500 text-xs md:text-sm">
+                    Today til 11:00 am
+                  </p>
+                </div>
+                <p class="text-gray-500 text-xs md:text-sm">Project C</p>
+                <img
+                  alt="User profile picture"
+                  class="rounded-full w-6 h-6 ml-1"
+                  src="/gambar/profile.jpg"
+                  width="24"
+                  height="24"
+                />
+              </div>
+
+              <!-- Navigation Icons -->
+              <div class="absolute bottom-2 right-2 flex space-x-2">
+                <button class="text-gray-600 hover:text-gray-800">
+                  <i class="fas fa-caret-left"></i>
+                </button>
+                <button class="text-gray-600 hover:text-gray-800">
+                  <i class="fas fa-caret-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Aktivitas Terakhir -->
+          <div class="bg-white p-4 rounded-lg shadow-lg relative">
+            <div
+              class="bg-blue-950 p-2 rounded mb-2 flex justify-between items-center"
+            >
+              <h2 class="font-bold text-white mb-0">Aktivitas Terakhir</h2>
+              <div class="mb-0">
+                <label for="activityFilter" class="text-gray-600 hidden"
+                  >Filter by Activity:</label
+                >
+                <select
+                  id="activityFilter"
+                  class="bg-white-100 border border-white-300 rounded p-1"
+                  onchange="filterActivitiesByLast()"
+                >
+                  <option value="all">All</option>
+                  <option value="projectA">Project A</option>
+                  <option value="projectB">Project B</option>
+                  <option value="projectC">Project C</option>
+                  <option value="projectD">Project D</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="lastActivityList">
+              <!-- Aktivitas 1 -->
+              <div
+                class="flex items-center mb-4 activity"
+                data-project="projectD"
+              >
+                <img
+                  alt="activity 1"
+                  class="project-image w-12 h-12 mr-4"
+                  src="/gambar/logobmi.png"
+                />
+                <div>
+                  <p>
+                    <strong>Liam Horan</strong> membuat activity baru pada
+                    <strong>Project D</strong>
+                  </p>
+                  <p class="text-gray-600 text-sm">09.00 AM</p>
+                </div>
+              </div>
+
+              <!-- Aktivitas 2 -->
+              <div
+                class="flex items-center mb-4 activity"
+                data-project="projectC"
+              >
+                <img
+                  alt="activity 2"
+                  class="project-image w-12 h-12 mr-4"
+                  src="/gambar/logobmi.png"
+                />
+                <div>
+                  <p>
+                    <strong>Zayn M</strong> updated activity plan
+                    <strong>Project C</strong>
+                  </p>
+                  <p class="text-gray-600 text-sm">Yesterday</p>
+                </div>
+              </div>
+
+              <!-- Aktivitas 3 -->
+              <div
+                class="flex items-center mb-4 activity"
+                data-project="projectA"
+              >
+                <img
+                  alt="activity 3"
+                  class="project-image w-12 h-12 mr-4"
+                  src="/gambar/user 1.jpg"
+                />
+                <div>
+                  <p>
+                    <strong>Niall</strong> added file to
+                    <strong>Project A</strong>
+                  </p>
+                  <p class="text-gray-600 text-sm">2 days ago</p>
+                </div>
+              </div>
+
+              <!-- Aktivitas 4 -->
+              <div
+                class="flex items-center mb-4 activity"
+                data-project="projectB"
+              >
+                <img
+                  alt="activity 4"
+                  class="project-image w-12 h-12 mr-4"
+                  src="/gambar/user 1.jpg"
+                />
+                <div>
+                  <p>
+                    <strong>Harry</strong> deleted a <strong>Project B</strong>
+                  </p>
+                  <p class="text-gray-600 text-sm">28 Aug</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Meeting Projects -->
+          <div class="bg-white p-4 rounded-lg shadow-lg relative">
+            <div
+              class="bg-blue-950 p-2 rounded mb-2 flex justify-between items-center"
+            >
+              <h2 class="font-bold text-white mb-0">Meeting</h2>
+              <div class="mb-0">
+                <label for="meetingFilter" class="text-gray-600 hidden"
+                  >Filter by Meeting:</label
+                >
+                <select
+                  id="meetingFilter"
+                  class="bg-white-100 border border-white-300 rounded p-1"
+                >
+                  <option value="all">All</option>
+                  <option value="projectA">Project A</option>
+                  <option value="projectB">Project B</option>
+                  <option value="projectC">Project C</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Meeting 1 -->
+            <div
+              class="bg-white p-3 rounded-lg shadow-lg mb-3"
+              data-project="projectA"
+            >
+              <p class="text-xl font-bold">Today 10:00 AM</p>
+              <p class="text-gray-600 text-sm">
+                Project A - Meeting Progress pertama
+              </p>
+            </div>
+
+            <!-- Meeting 2 -->
+            <div
+              class="bg-white p-3 rounded-lg shadow-lg mb-3"
+              data-project="projectB"
+            >
+              <p class="text-xl font-bold">10 Aug 2024 08:00 AM</p>
+              <p class="text-gray-600 text-sm">Project B - Meeting Progress</p>
+            </div>
+
+            <!-- Meeting 3 -->
+            <div
+              class="bg-white p-3 rounded-lg shadow-lg mb-3"
+              data-project="projectC"
+            >
+              <p class="text-xl font-bold">15 Aug 2024 09:00 AM</p>
+              <p class="text-gray-600 text-sm">Project C - Meeting Progress</p>
+            </div>
+
+            <!-- Ikon Navigasi -->
+            <div class="absolute bottom-2 right-2 flex space-x-2">
+              <button class="text-gray-600 hover:text-gray-800">
+                <i class="fas fa-caret-left"></i>
+                <!-- Ikon panah kiri -->
+              </button>
+              <button class="text-gray-600 hover:text-gray-800">
+                <i class="fas fa-caret-right"></i>
+                <!-- Ikon panah kanan -->
+              </button>
+            </div>
+          </div>
+
+          <script src="/javascript/dashboard-user.js"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

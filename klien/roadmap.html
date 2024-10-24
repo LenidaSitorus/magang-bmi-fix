@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadMap Klien</title>
+    <link href="/src/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<style>
+    /* Agar garis tanggal lebih jauh ke kanan */
+    
+    #daysRow {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 150px;
+        /* Geser lebih ke kanan */
+    }
+    
+    #daysRow div {
+        min-width: 50px;
+        text-align: center;
+    }
+    /* Project bars styling */
+    
+    .project-bar {
+        position: relative;
+        height: 8px;
+        border-radius: 8px;
+        margin-left: 150px;
+        /* Sesuaikan juga bar proyek */
+    }
+</style>
+
+<body class="bg-gray-100">
+
+    <!-- Sidebar -->
+    <div
+      class="fixed top-0 left-0 w-64 h-screen bg-blue-950 text-white flex flex-col items-center py-7 shadow-md z-50"
+    >
+      <div class="relative mb-4">
+        <img
+          alt="Profile picture"
+          class="rounded-full w-24 h-24"
+          src="/gambar/profile.jpg"
+          width="100"
+          height="100"
+        />
+        <a
+          href="profile.html"
+          class="absolute bottom-0 right-0 bg-white rounded-full p-2 flex items-center justify-center w-8 h-8"
+        >
+          <i class="fas fa-pencil-alt text-yellow-600"></i>
+        </a>
+      </div>
+      <div class="text-center mb-8">
+        <p class="text-lg">Nama</p>
+        <p class="text-sm">Email</p>
+      </div>
+      <div class="w-full">
+        <a
+          class="flex items-center px-4 py-2 bg-gray-200 text-gray-800 w-full space-x-4"
+          href="dashboard.html"
+        >
+          <i class="fas fa-th-large ml-3"></i>
+          <span class="text-base">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="project.html"
+        >
+      </div>
+      <div class="mt-auto w-full">
+        <a
+          class="flex items-center px-4 py-2 hover:bg-blue-700 w-full max-w-xs justify-center"
+          href="login.html"
+        >
+          <i class="fas fa-sign-out-alt mr-3"></i>
+          <span>Log Out</span>
+        </a>
+      </div>
+    </div>
+
+     <!-- Header -->
+     <div class="fixed top-0 left-64 right-0 h-20 bg-white shadow-md flex items-center justify-between px-5 z-50">
+      <img src="/bmi fix/gambar/logobmi.png" alt="BMI Logo" class="h-20">
+      <div class="flex items-center space-x-5">
+          <a href="listuser.html" class="focus:outline-none">
+              <i class="fas fa-user-plus text-xl"></i>
+          </a>
+          <div class="relative">
+              <button id="notificationButton" class="relative focus:outline-none">
+                <!-- Ikon FontAwesome -->
+                <i class="fas fa-bell text-xl"></i>
+                
+                <!-- Badge jumlah notifikasi -->
+                <span class="absolute top-0 right-0 bg-red-500 text-xs text-white rounded-full w-5 h-5 flex items-center justify-center">3</span>
+              </button>
+
+              <!-- Dropdown Notifikasi -->
+              <div id="notificationDropdown" class="hidden absolute right-0 mt-2 w-64 bg-white text-gray-700 shadow-lg rounded-lg z-50 max-h-64 overflow-y-auto ">
+                  <div class="p-4">
+                      <h3 class="font-bold mb-2">Notifikasi</h3>
+                      <ul>
+                          <li class="py-2 border-b">Anda baru ditugaskan di <strong class="text-blue-500">Proyek A</strong></li>
+                          <li class="py-2 border-b">Proyek <strong class="text-blue-500">B</strong> telah selesai</li>
+                          <li class="py-2 border-b">Tugas di <strong class="text-blue-500">Proyek C</strong> diperbarui</li>
+                          <li class="py-2 border-b">Pembaruan dalam <strong class="text-blue-500">Proyek D</strong></li>
+                          <li class="py-2 border-b">Anda baru ditugaskan di <strong class="text-blue-500">Proyek E</strong></li>
+                          <li class="py-2 border-b">Proyek <strong class="text-blue-500">F</strong> selesai tepat waktu</li>
+                          <li class="py-2 border-b">Tugas di <strong class="text-blue-500">Proyek G</strong> diperbarui</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <a href="/help" class="focus:outline-none">
+              <i class="fas fa-question-circle text-xl"></i>
+          </a>
+      </div>
+  </div>
+
+    <!-- Main-->
+    <div class="ml-64 mt-20 p-6">
+        <div class="flex flex-col">
+            <!-- Page Title -->
+            <h1 class="text-3xl font-bold mb-4">Dashboard</h1>
+
+    <!-- Navigation Tabs -->
+    <div class="flex space-x-8 mt-2 mb-4">
+      <!-- Menambahkan mb-4 disini -->
+      <a
+        href="dashboard.html"
+        class="pb-2"
+        >Overview</a
+      >
+      <a href="roadmap.html" class="pb-2 border-b-2 border-blue-600 cursor-pointer">Roadmap</a>
+      <a href="timeline.html" class="pb-2">Timeline</a>
+    </div>
+
+
+<!-- Main Content -->
+<div class="bg-white rounded-lg shadow-lg w-full p-6">
+  <!-- Month and Navigation Buttons -->
+  <div class="flex justify-between items-center border-b pb-4 mb-4">
+    <h1 id="monthDisplay" class="text-2xl font-bold"></h1>
+    <div class="flex space-x-2">
+      <button id="prevMonthBtn" class="text-xl">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button id="nextMonthBtn" class="text-xl">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Dropdown Pilih Project -->
+  <div class="mb-4">
+    <label for="projectFilter" class="font-semibold">Pilih Project:</label>
+    <select id="projectFilter" class="border rounded-md px-2 py-1">
+      <option value="all">Semua Project</option>
+      <option value="project1">Project 1</option>
+      <option value="project2">Project 2</option>
+      <option value="project3">Project 3</option>
+      <option value="project4">Project 4</option>
+    </select>
+  </div>
+
+  <!-- Timeline Grid -->
+  <div class="overflow-x-auto">
+    <!-- Dates Row (Horizontal Dates) -->
+    <div
+      id="daysRow"
+      class="flex space-x-4 mb-4 text-sm font-semibold text-gray-600"
+    >
+      <!-- Dates will be dynamically generated -->
+    </div>
+
+<!-- User Project Rows -->
+<div class="space-y-4 overflow-x-auto" id="userProjectRows">
+  <!-- User Row 1 -->
+  <div class="flex items-center w-full user-project" data-project="project1 project2">
+    <img
+      src="https://via.placeholder.com/40"
+      class="rounded-full mr-2 sticky left-0 bg-white"
+      alt="User 1"
+    />
+    <span class="text-sm font-bold w-32 sticky left-10 bg-white">LIAM HORAN</span>
+
+    <!-- Project bar 1: 60% of the total duration -->
+    <div class="flex-grow relative h-8  bg-blue-700 rounded-full ml-2 mr-2" style="width: 60%;">
+      <span class="absolute right-2 top-1 text-xs text-white">Activity 1</span>
+    </div>
+
+    <!-- Project bar 2: 30% of the total duration -->
+    <div class="flex-grow relative h-8 bg-yellow-500 rounded-full ml-2" style="width: 30%;">
+      <span class="absolute right-2 top-1 text-xs text-white">Activity 2 </span>
+    </div>
+  </div>
+
+  <!-- User Row 2 -->
+  <div class="flex items-center w-full user-project" data-project="project3 project4">
+    <img
+      src="https://via.placeholder.com/40"
+      class="rounded-full mr-2 sticky left-0 bg-white"
+      alt="User 2"
+    />
+    <span class="text-sm font-bold w-32 sticky left-10 bg-white">LIAM HORAN</span>
+
+    <!-- Project bar 3: 40% of the total duration -->
+    <div class="flex-grow relative h-8 bg-yellow-500 rounded-full ml-2 mr-2" style="width: 40%;">
+      <span class="absolute right-2 top-1 text-xs text-white">Project 3</span>
+    </div>
+
+    <!-- Project bar 4: 70% of the total duration -->
+    <div class="flex-grow relative h-8 bg-blue-700  rounded-full ml-2" style="width: 70%;">
+      <span class="absolute right-2 top-1 text-xs text-white">Project 4</span>
+    </div>
+  </div>
+
+  <!-- User Row 3 -->
+  <div class="flex items-center w-full user-project" data-project="project1 project3">
+    <img
+      src="https://via.placeholder.com/40"
+      class="rounded-full mr-2 sticky left-0 bg-white"
+      alt="User 3"
+    />
+    <span class="text-sm font-bold w-32 sticky left-10 bg-white">NIAL HORAN</span>
+
+    <!-- Project bar 1: 50% of the total duration -->
+    <div class="flex-grow relative h-8 bg-blue-700 rounded-full ml-2 mr-2" style="width: 50%;">
+      <span class="absolute right-2 top-1 text-xs text-white">Activity 1</span>
+    </div>
+
+    <!-- Project bar 3: 20% of the total duration -->
+    <div class="flex-grow relative h-8 bg-blue-700 rounded-full ml-2" style="width: 20%;">
+      <span class="absolute right-2 top-1 text-xs text-white">Project 3</span>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="/javascript/roadmap.js">
+ 
+</script>
+ </body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Plan Perencanaan</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/src/output.css" />
+  </head>
+
+  <body class="bg-gray-100">
+    <!-- Sidebar -->
+    <div
+      class="fixed top-0 left-0 w-64 h-screen bg-blue-950 text-white flex flex-col items-center py-7 shadow-md z-50"
+    >
+      <div class="relative mb-4">
+        <img
+          alt="Profile picture"
+          class="rounded-full w-24 h-24"
+          src="/gambar/profile.jpg"
+          width="100"
+          height="100"
+        />
+        <a
+          href="profile.html"
+          class="absolute bottom-0 right-0 bg-white rounded-full p-2 flex items-center justify-center w-8 h-8"
+        >
+          <i class="fas fa-pencil-alt text-yellow-600"></i>
+        </a>
+      </div>
+      <div class="text-center mb-8">
+        <p class="text-lg">Nama</p>
+        <p class="text-sm">Email</p>
+      </div>
+      <div class="w-full">
+        <!-- Sidebar menu items -->
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="dashboard.html"
+        >
+          <i class="fas fa-th-large ml-3"></i>
+          <span class="text-base">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="project.html"
+        >
+          <i class="fas fa-folder ml-3"></i>
+          <span class="text-base">Project</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 bg-gray-200 text-gray-800 w-full space-x-4"
+          href="activityplan.html"
+        >
+          <i class="fas fa-calendar-check ml-3"></i>
+          <span class="text-base">Activity Plan</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="report.html"
+        >
+          <i class="fas fa-file-alt ml-3"></i>
+          <span class="text-base">Report</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="lt_support.html"
+        >
+          <i class="fas fa-clock ml-3"></i>
+          <span class="text-base">Leadtime</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="meeting.html"
+        >
+          <i class="fas fa-users ml-3"></i>
+          <span class="text-base">Meeting</span>
+        </a>
+      </div>
+      <div class="mt-auto w-full">
+        <a
+          class="flex items-center px-4 py-2 hover:bg-blue-700 w-full max-w-xs justify-center"
+          href="login.html"
+        >
+          <i class="fas fa-sign-out-alt mr-3"></i>
+          <span>Log Out</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div
+      class="fixed top-0 left-64 right-0 h-20 bg-white shadow-md flex items-center justify-between px-6 z-50"
+    >
+      <img src="/gambar/logobmi.png" alt="BMI Logo" class="h-16" />
+      <div class="flex items-center space-x-5">
+        <a href="listuser.html" class="focus:outline-none">
+          <i class="fas fa-user-plus text-xl"></i>
+        </a>
+        <div class="relative">
+          <button id="notificationButton" class="relative focus:outline-none">
+            <i class="fas fa-bell text-xl"></i>
+            <spanu
+              class="absolute top-0 right-0 bg-red-500 text-xs text-white rounded-full w-5 h-5 flex items-center justify-center"
+              >3</span>
+          </button>
+          <!-- Dropdown Notifikasi -->
+          <div
+            id="notificationDropdown"
+            class="hidden absolute right-0 mt-2 w-64 bg-white text-gray-700 shadow-lg rounded-lg z-50 max-h-64 overflow-y-auto"
+          >
+            <!-- Notifications -->
+          </div>
+        </div>
+        <a href="/help" class="focus:outline-none">
+          <i class="fas fa-question-circle text-xl"></i>
+        </a>
+      </div>
+    </div>
+    <!-- Main Content Area -->
+    <div class="ml-64 mt-20 p-6 relative">
+      <div class="flex justify-end mb-4">
+        <a
+          href="activityplan.html"
+          class="bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 flex items-center"
+          >Kembali <i class="fas fa-arrow-left ml-2"></i
+        ></a>
+      </div>
+      <div class="bg-white shadow-md rounded-lg p-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">
+          Detail Activity Plan
+        </h1>
+
+        <!-- Tabs -->
+        <div class="border-b border-gray-200 mb-6">
+          <nav class="flex space-x-4">
+            <a
+              href="/admin/detail-activityplan.html"
+              class="py-2 px-4 text-blue-600 border-b-2 border-blue-600 font-medium"
+              >Perencanaan</a
+            >
+            <a
+              href="/admin/detail-persiapan.html"
+              class="py-2 px-4 text-gray-500 hover:text-blue-600"
+              >Persiapan</a
+            >
+            <a
+              href="/admin/detail-pelaksanaan.html"
+              class="py-2 px-4 text-gray-500 hover:text-blue-600"
+              >Pelaksanaan</a
+            >
+          </nav>
+        </div>
+
+        <div class="flex justify-between items-center mb-4">
+          <button
+            id="openModalBtn"
+            class="bg-blue-950 hover:bg-blue-600 text-white px-4 py-2 rounded flex items-center space-x-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+            <span>Buat baru</span>
+          </button>
+        </div>
+
+        <!-- Content main -->
+        <div class="overflow-x-auto">
+          <table
+            class="min-w-full table-auto border-collapse"
+            id="activityPlanTable"
+          >
+            <thead>
+              <tr class="bg-blue-900">
+                <th
+                  class="px-4 py-2 text-left text-white"
+                  colspan="2"
+                  style="border-right: 2px solid white"
+                >
+                  Target Perkiraan
+                </th>
+                <th
+                  class="px-4 py-2 text-left text-white"
+                  colspan="2"
+                  style="border-right: 2px solid white"
+                >
+                  Target Realisasi
+                </th>
+                <th
+                  class="px-4 py-2 text-left text-white border-b-0"
+                  style="border-right: 2px solid white"
+                >
+                  Keterangan Kegiatan
+                </th>
+                <th
+                  class="px-4 py-2 text-left text-white border-b-0"
+                  style="border-right: 2px solid white"
+                >
+                  Aksi
+                </th>
+              </tr>
+              <tr class="bg-blue-900">
+                <th
+                  class="px-4 py-2 text-left text-white"
+                  style="
+                    border-right: 1px solid white;
+                    border-top: 2px solid white;
+                  "
+                >
+                  Awal
+                </th>
+                <th
+                  class="px-4 py-2 text-left text-white"
+                  style="
+                    border-right: 2px solid white;
+                    border-top: 2px solid white;
+                  "
+                >
+                  Akhir
+                </th>
+                <th
+                  class="px-4 py-2 text-left text-white"
+                  style="
+                    border-right: 1px solid white;
+                    border-top: 2px solid white;
+                  "
+                >
+                  Awal
+                </th>
+                <th
+                  class="px-4 py-2 text-left text-white"
+                  style="
+                    border-right: 2px solid white;
+                    border-top: 2px solid white;
+                  "
+                >
+                  Akhir
+                </th>
+                <th
+                  class="px-4 py-2 text-left text-blue-900"
+                  style="border-right: 2px solid white"
+                >
+                  Keterangan
+                </th>
+                <th
+                  class="px-4 py-2 text-left text-blue-900 border-b-0"
+                  style="border-right: 2px solid white"
+                >
+                  Edit/Delete
+                </th>
+              </tr>
+            </thead>
+            <tbody id="activityPlanBody">
+              <!-- Data Pertama -->
+              <tr>
+                <td class="px-4 py-2 border text-gray-700">2024-10-25</td>
+                <td class="px-4 py-2 border text-gray-700">2024-10-30</td>
+                <td class="px-4 py-2 border text-gray-700">2024-10-25</td>
+                <td class="px-4 py-2 border text-gray-700">2024-10-30</td>
+                <td class="px-4 py-2 border text-gray-700">
+                  Deskripsi kegiatan pertama
+                </td>
+                <td class="border px-4 py-2 text-center">
+                  <i
+                    class="fas fa-edit text-blue-500 cursor-pointer"
+                    onclick="openEditModal(this)"
+                  ></i>
+                  <i
+                    class="fas fa-trash-alt text-red-500 cursor-pointer"
+                    onclick="openDeleteModal(this.closest('tr'))"
+                  ></i>
+                </td>
+              </tr>
+              <!-- Data Kedua -->
+              <tr>
+                <td class="px-4 py-2 border text-gray-700">2024-11-01</td>
+                <td class="px-4 py-2 border text-gray-700">2024-11-05</td>
+                <td class="px-4 py-2 border text-gray-700">2024-11-01</td>
+                <td class="px-4 py-2 border text-gray-700">2024-11-05</td>
+                <td class="px-4 py-2 border text-gray-700">
+                  Deskripsi kegiatan kedua
+                </td>
+                <td class="border px-4 py-2 text-center">
+                  <i
+                    class="fas fa-edit text-blue-500 cursor-pointer"
+                    onclick="openEditModal(this)"
+                  ></i>
+                  <i
+                    class="fas fa-trash-alt text-red-500 cursor-pointer"
+                    onclick="openDeleteModal(this.closest('tr'))"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      id="modal"
+      class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50"
+    >
+      <div class="bg-white rounded-lg p-6 w-1/3 relative">
+        <h2 class="text-xl font-semibold mb-4">Buat Activity Plan</h2>
+        <button
+          id="closeModalBtn"
+          class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 focus:outline-none"
+          aria-label="Close modal"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+
+        <form id="activityPlanForm">
+          <div class="mb-4">
+            <label for="startDate" class="block text-gray-700"
+              >Tanggal Perkiraan Awal</label
+            >
+            <input
+              type="date"
+              id="startDate"
+              class="border border-gray-300 rounded-lg p-2 w-full"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="endDate" class="block text-gray-700"
+              >Tanggal Perkiraan Akhir</label
+            >
+            <input
+              type="date"
+              id="endDate"
+              class="border border-gray-300 rounded-lg p-2 w-full"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="description" class="block text-gray-700"
+              >Keterangan</label
+            >
+            <textarea
+              id="description"
+              class="border border-gray-300 rounded-lg p-2 w-full"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+          <div class="flex justify-end">
+            <button
+              type="button"
+              id="saveButton"
+              class="bg-blue-600 text-white px-4 py-2 rounded"
+            >
+              Simpan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Hapus Modal -->
+    <div
+      id="HapusModal"
+      class="fixed inset-0 hidden bg-gray-700 bg-opacity-75 z-50"
+    >
+      <div
+        class="bg-white p-6 rounded-lg shadow-lg w-1/3"
+        style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        "
+      >
+        <h2 class="text-xl font-semibold mb-4">Konfirmasi Hapus</h2>
+        <p class="mb-4">Anda yakin ingin menghapus baris ini?</p>
+        <div class="flex justify-end">
+          <button
+            class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg mr-2"
+            onclick="closeModal('HapusModal')"
+          >
+            Batal
+          </button>
+          <button
+            id="confirmDelete"
+            class="bg-red-500 text-white px-4 py-2 rounded-lg"
+          >
+            Hapus
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="/javascript/detail-activityplan.js"></script>
+  </body>
+</html>

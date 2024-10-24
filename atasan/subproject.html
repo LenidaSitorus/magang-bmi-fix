@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Sub Project Page</title>
+    <link href="/src/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+
+       <!-- Sidebar -->
+       <div class="fixed top-0 left-0 w-64 h-screen bg-blue-950 text-white flex flex-col items-center py-7 shadow-md z-50">
+        <div class="relative mb-4">
+            <img alt="Profile picture" class="rounded-full w-24 h-24" src="/gambar/profile.jpg" width="100" height="100" />
+            <a href="profile.html" class="absolute bottom-0 right-0 bg-white rounded-full p-2 flex items-center justify-center w-8 h-8">
+                <i class="fas fa-pencil-alt text-yellow-600"></i>
+            </a>
+        </div>
+        <div class="text-center mb-8">
+            <p class="text-lg">Nama</p>
+            <p class="text-sm">Email</p>
+        </div>
+        <div class="w-full">
+            <a class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4" href="dashboard.html">
+                <i class="fas fa-th-large ml-3"></i>
+                <span class="text-base">Dashboard</span>
+            </a>
+            <a class="flex items-center px-4 py-2 mt-2  bg-gray-200 text-gray-800 hover:bg-blue-700 w-full space-x-4" href="project.html">
+                <i class="fas fa-folder ml-3"></i>
+                <span class="text-base">Project</span>
+            </a>
+            <a class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4" href="activityplan.html">
+                <i class="fas fa-calendar-check ml-3"></i>
+                <span class="text-base">Activity Plan</span>
+            </a>
+            <a class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4" href="report.html">
+                <i class="fas fa-file-alt ml-3"></i>
+                <span class="text-base">Report</span>
+            </a>
+            <a class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4" href="lt_support.html">
+                <i class="fas fa-clock ml-3"></i>
+                <span class="text-base">Leadtime</span>
+            </a>
+            <a class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4" href="meeting.html">
+                <i class="fas fa-users ml-3"></i>
+                <span class="text-base">Meeting</span>
+             </a>
+        </div>
+        <div class="mt-auto w-full">
+            <a class="flex items-center px-4 py-2 hover:bg-blue-700 w-full max-w-xs justify-center" href="login.html">
+                <i class="fas fa-sign-out-alt mr-3"></i>
+                <span>Log Out</span>
+            </a>
+        </div>
+    </div>
+
+
+        <!-- Header -->
+        <div class="flex-1 flex flex-col ml-64">
+            <div class="flex justify-between items-center px-6 py-6 bg-white shadow h-20">
+                <img src="/gambar/logobmi.png" alt="BMI Logo" class="h-16" />
+                <div class="flex items-center space-x-5">
+                    <a href="listuser.html" class="focus:outline-none">
+                        <i class="fas fa-user-plus text-xl"></i>
+                    </a>
+                    <div class="relative">
+                        <button id="notificationButton" class="relative focus:outline-none">
+                          <!-- Ikon FontAwesome -->
+                          <i class="fas fa-bell text-xl"></i>
+                          
+                          <!-- Badge jumlah notifikasi -->
+                          <span class="absolute top-0 right-0 bg-red-500 text-xs text-white rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                        </button>
+
+                        <!-- Dropdown Notifikasi -->
+                        <div id="notificationDropdown" class="hidden absolute right-0 mt-2 w-64 bg-white text-gray-700 shadow-lg rounded-lg z-50 max-h-64 overflow-y-auto ">
+                            <div class="p-4">
+                                <h3 class="font-bold mb-2">Notifikasi</h3>
+                                <ul>
+                                    <li class="py-2 border-b">Anda baru ditugaskan di <strong class="text-blue-500">Proyek A</strong></li>
+                                    <li class="py-2 border-b">Proyek <strong class="text-blue-500">B</strong> telah selesai</li>
+                                    <li class="py-2 border-b">Tugas di <strong class="text-blue-500">Proyek C</strong> diperbarui</li>
+                                    <li class="py-2 border-b">Pembaruan dalam <strong class="text-blue-500">Proyek D</strong></li>
+                                    <li class="py-2 border-b">Anda baru ditugaskan di <strong class="text-blue-500">Proyek E</strong></li>
+                                    <li class="py-2 border-b">Proyek <strong class="text-blue-500">F</strong> selesai tepat waktu</li>
+                                    <li class="py-2 border-b">Tugas di <strong class="text-blue-500">Proyek G</strong> diperbarui</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/help" class="focus:outline-none">
+                        <i class="fas fa-question-circle text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="flex-1 p-6">
+                <!-- Project Content -->
+                <div class="flex flex-col">
+                    <!-- Page Title -->
+                    <h1 class="text-3xl font-bold mb-4"> Nama Project</h1>
+                        
+                        <!-- Search & Filter Section -->
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex space-x-2">
+                                <input type="text" id="searchInput" placeholder="Search..." class="border rounded-lg px-4 py-2 w-60">
+                                <select onchange="filterCards(this.value)" class="bg-white-900 hover:bg-white-300 text-gray-800 rounded-xl px-4 py-2">
+                                    <option value="all">All</option>
+                                    <option value="active">Active</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="on-progress">On-Progress</option>
+                                    <option value="non-active">Non-Active</option>
+                                </select>
+                        </div>
+                       
+                        <!-- Button Buat Baru -->
+                        <button class="bg-blue-800 hover:bg-blue-600 text-white rounded-lg px-4 py-2 flex items-center space-x-2" onclick="openModal('projectModal')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                    <span>Buat Baru</span>
+                                </button>
+                    </div>
+                </div>
+<!-- Project table -->
+<div class="bg-white rounded-lg shadow-lg w-full p-6">
+    <div class="border rounded-lg overflow-hidden bg-white">
+        <table id="projectTable" class="min-w-full bg-white">
+            <thead class="bg-blue-950 text-white">
+                <tr>
+                    <th class="py-2 px-4 text-left">No</th>
+                    <th class="py-2 px-4 text-left">Image</th>
+                    <th class="py-2 px-4 text-left">Name Sub</th>
+                    <th class="py-2 px-4 text-left">PIC</th>
+                    <th class="py-2 px-4 text-left">Area</th>
+                    <th class="py-2 px-4 text-left">Requestor</th>
+                    <th class="py-2 px-4 text-left">Deskripsi</th>
+                    <th class="py-2 px-4 text-left">Status</th>
+                    <th class="py-2 px-4 text-left">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-t bg-white">
+                    <td class="py-2 px-4">1</td>
+                    <td class="py-2 px-4 text-center">
+                        <img src="link-ke-gambar1.jpg" alt="Image 1" class="w-10 h-10"> <!-- Gambar ukuran 50x50 -->
+                    </td>
+                    <td class="py-2 px-4">Magang Bmi</td>
+                    <td class="py-2 px-4">Deirdre</td>
+                    <td class="py-2 px-4">Area 1</td>
+                    <td class="py-2 px-4">User 1</td>
+                    <td class="py-2 px-4">Lorem ipsum dolor sit amet</td>
+                    <td class="border px-4 py-2 text-center">
+                        <span class="inline-block bg-blue-500 text-white text-xs px-2 py-1 rounded">Active</span>
+                    </td>
+                    <td class="py-2 px-4 text-center">
+                        <div class="flex flex-col space-y-2">
+                            <i class="fas fa-edit text-blue-500 cursor-pointer" onclick="openModal('editModal')"></i>
+                            <i class="fas fa-trash-alt text-red-500 cursor-pointer" onclick="openModal('HapusModal')"></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="border-t bg-white">
+                    <td class="py-2 px-4">2</td>
+                    <td class="py-2 px-4 text-center">
+                        <img src="link-ke-gambar2.jpg" alt="Image 2" class="w-10 h-10"> <!-- Gambar ukuran 50x50 -->
+                    </td>
+                    <td class="py-2 px-4">Support</td>
+                    <td class="py-2 px-4">Zeva</td>
+                    <td class="py-2 px-4">Area 2</td>
+                    <td class="py-2 px-4">User 2</td>
+                    <td class="py-2 px-4">Lorem ipsum dolor sit amet</td>
+                    <td class="border px-4 py-2 text-center">
+                        <span class="inline-block bg-gray-500 text-white text-xs px-2 py-1 rounded">Pending</span>
+                    </td>
+                    <td class="py-2 px-4 text-center">
+                        <div class="flex flex-col space-y-2">
+                            <i class="fas fa-edit text-blue-500 cursor-pointer" onclick="openModal('editModal')"></i>
+                            <i class="fas fa-trash-alt text-red-500 cursor-pointer" onclick="openModal('HapusModal')"></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="border-t bg-white">
+                    <td class="py-2 px-4">3</td>
+                    <td class="py-2 px-4 text-center">
+                        <img src="link-ke-gambar3.jpg" alt="Image 3" class="w-10 h-10"> <!-- Gambar ukuran 50x50 -->
+                    </td>
+                    <td class="py-2 px-4">UI/UX PM BMI</td>
+                    <td class="py-2 px-4">Lenida</td>
+                    <td class="py-2 px-4">Area 3</td>
+                    <td class="py-2 px-4">User 3</td>
+                    <td class="py-2 px-4">Lorem ipsum dolor sit amet</td>
+                    <td class="border px-4 py-2 text-center">
+                        <span class="inline-block bg-red-500 text-white text-xs px-2 py-1 rounded">Non-Active</span>
+                    </td>
+                    <td class="py-2 px-4 text-center">
+                        <div class="flex flex-col space-y-2">
+                            <i class="fas fa-edit text-blue-500 cursor-pointer" onclick="openModal('editModal')"></i>
+                            <i class="fas fa-trash-alt text-red-500 cursor-pointer" onclick="openModal('HapusModal')"></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="border-t bg-white">
+                    <td class="py-2 px-4">4</td>
+                    <td class="py-2 px-4 text-center">
+                        <img src="link-ke-gambar3.jpg" alt="Image 3" class="w-10 h-10"> <!-- Gambar ukuran 50x50 -->
+                    </td>
+                    <td class="py-2 px-4">UI/UX PM BMI</td>
+                    <td class="py-2 px-4">Lenida</td>
+                    <td class="py-2 px-4">Area 3</td>
+                    <td class="py-2 px-4">User 3</td>
+                    <td class="py-2 px-4">Lorem ipsum dolor sit amet</td>
+                    <td class="border px-4 py-2 text-center">
+                        <span class="inline-block bg-yellow-500 text-white text-xs px-2 py-1 rounded">On-Progress</span>
+                    </td>
+                    <td class="py-2 px-4 text-center">
+                        <div class="flex flex-col space-y-2">
+                            <i class="fas fa-edit text-blue-500 cursor-pointer" onclick="openModal('editModal')"></i>
+                            <i class="fas fa-trash-alt text-red-500 cursor-pointer" onclick="openModal('HapusModal')"></i>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<!-- Navigasi Halaman -->
+<div class="flex justify-end mt-4">
+    <nav>
+        <ul class="flex space-x-2">
+            <li><a href="#" class="px-3 py-1 bg-gray-200 rounded">Previous</a></li>
+            <li><a href="#" class="px-3 py-1 bg-gray-200 rounded">1</a></li>
+            <li><a href="#" class="px-3 py-1 bg-gray-200 rounded">2</a></li>
+            <li><a href="#" class="px-3 py-1 bg-gray-200 rounded">3</a></li>
+            <li><a href="#" class="px-3 py-1 bg-gray-200 rounded">Next</a></li>
+        </ul>
+    </nav>
+</div>
+</div>
+
+                <!-- Project Modal -->
+                <div id="projectModal" class="fixed inset-0 hidden bg-gray-700 bg-opacity-75 z-50">
+                    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-3xl max-h-[80vh] overflow-y-auto modal-content relative" style="
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  ">
+                        <!-- Close Button (Icon at the top-right) -->
+                        <button onclick="closeModal('projectModal')" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800">
+            &times;
+        </button>
+                        <h2 class="text-2xl font-bold mb-4">Sub Project Baru</h2>
+                        <form class="space-y-4">
+                            <!-- Project Name -->
+                            <div class="flex items-center space-x-4">
+                                <label for="projectName" class="w-1/4 text-gray-700">Name Sub</label>
+                                <input type="text" id="projectName" class="border rounded-lg flex-grow p-2" placeholder="Enter sub project name" required>
+                            </div>
+                            <!-- Status -->
+                            <div class="flex items-center space-x-4">
+                                <label for="projectStatus" class="w-1/4 text-gray-700">Status</label>
+                                <select id="projectStatus" class="border rounded-lg flex-grow p-2" required>
+                    <option value="">Select status</option>
+                    <option value="active">Active</option>
+                    <option value="pending">Pending</option>
+                    <option value="on-progress">On-progress</option>
+                    <option value="non-active">Non-Active</option>
+                </select>
+                            </div>
+                            <!-- Requestor -->
+<div class="mb-4">
+  <label class="block text-gray-700 mb-2">Requestor</label>
+  <div id="requestorContainer" class="flex flex-wrap items-center gap-2 border p-2 rounded-lg">
+      <div id="selectedRequestors" class="flex flex-wrap gap-2"></div>
+      <button id="addRequestorBtn" type="button" class="text-blue-500 hover:text-blue-700">
+          <i class="fas fa-user-plus"></i> Add Requestor
+      </button>
+  </div>
+  <div id="requestorDropdown" class="hidden mt-2 border rounded-lg shadow-lg bg-white p-2">
+      <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 1">User 1</button>
+      <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 2">User 2</button>
+      <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 3">User 3</button>
+  </div>
+</div>
+                            <!-- Area -->
+                            <div class="flex items-center space-x-4">
+                                <label for="projectArea" class="w-1/4 text-gray-700">Area</label>
+                                <input type="text" id="projectArea" class="border rounded-lg flex-grow p-2" placeholder="Enter area" required>
+                            </div>
+                            <!-- Assignees -->
+                            <div class="mb-4">
+                                <label class="block text-gray-700 mb-2">PIC</label>
+                                <div id="assigneeContainer" class="flex flex-wrap items-center gap-2 border p-2 rounded-lg">
+                                    <div id="selectedUsers" class="flex flex-wrap gap-2"></div>
+                                    <button id="addAssigneeBtn" type="button" class="text-blue-500 hover:text-blue-700">
+                        <i class="fas fa-user-plus"></i> Add PIC
+                    </button>
+                                </div>
+                                <div id="assigneeDropdown" class="hidden mt-2 border rounded-lg shadow-lg bg-white p-2">
+                                    <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 1">User 1</button>
+                                    <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 2">User 2</button>
+                                    <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 3">User 3</button>
+                                </div>
+                            </div>
+                            <!-- Description -->
+                            <div class="flex items-center space-x-4">
+                                <label for="projectDescription" class="w-1/4 text-gray-700">Description</label>
+                                <textarea id="projectDescription" class="border rounded-lg flex-grow p-2" rows="4" placeholder="Enter description" required></textarea>
+                            </div>
+                            <!-- File Input -->
+                            <div id="fileInputs" class="mb-4">
+                                <label class="block text-gray-700 mb-2">Upload Document</label>
+                                <input type="file" id="projectFiles" class="border rounded-lg w-full p-2" accept=".jpg,.jpeg,.png,.doc,.docx,.pdf" onkeydown="handleKeyPress(event, 'file')">
+                            </div>
+                            <!-- Submit Button -->
+                            <form class="space-y-4" onsubmit="addSubProject(event)">
+                                <!-- ... input fields ... -->
+                                <div class="flex justify-end space-x-4">
+                                    <button type="submit" class="bg-blue-800 hover:bg-blue-600 text-white rounded-lg px-4 py-2">Simpan</button>
+                                </div>
+                            </form>                            
+                    </div>
+                </div>
+                <!-- Edit Project Modal -->
+                <div id="editModal" class="fixed inset-0 hidden bg-gray-700 bg-opacity-75 z-50">
+                    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-3xl max-h-[80vh] overflow-y-auto modal-content relative" style="
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+">
+                        <!-- Close Button (Icon at the top-right) -->
+                        <button onclick="closeModal('editModal')" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800">
+&times;
+</button>
+                        <h2 class="text-2xl font-bold mb-4">Edit Project</h2>
+                        <form id="editProjectForm" class="space-y-4">
+                            <!-- Project Name -->
+                            <div class="flex items-center space-x-4">
+                                <label for="editProjectName" class="w-1/4 text-gray-700">Project Name</label>
+                                <input type="text" id="editProjectName" class="border rounded-lg flex-grow p-2" placeholder="Enter project name" required>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="flex items-center space-x-4">
+                                <label for="editProjectStatus" class="w-1/4 text-gray-700">Status</label>
+                                <select id="editProjectStatus" class="border rounded-lg flex-grow p-2" required>
+    <option value="">Select status</option>
+    <option value="active">Active</option>
+    <option value="pending">Pending</option>
+    <option value="non-active">Non-Active</option>
+</select>
+                            </div>
+
+                           
+                           <!-- Requestor (Dropdown Multiple Select) -->
+<div class="mb-4">
+  <label class="block text-gray-700 mb-2">Requestor</label>
+  <div id="editRequestorContainer" class="flex flex-wrap items-center gap-2 border p-2 rounded-lg">
+      <div id="editSelectedRequestors" class="flex flex-wrap gap-2"></div>
+      <button id="editAddRequestorBtn" type="button" class="text-blue-500 hover:text-blue-700">
+          <i class="fas fa-user-plus"></i> Add Requestor
+      </button>
+  </div>
+  <div id="editRequestorDropdown" class="hidden mt-2 border rounded-lg shadow-lg bg-white p-2">
+      <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 1">User 1</button>
+      <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 1">User 2</button>
+      <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 1">User 3</button>
+  </div>
+</div>
+
+
+                            <!-- Area -->
+                            <div class="flex items-center space-x-4">
+                                <label for="editProjectArea" class="w-1/4 text-gray-700">Area</label>
+                                <input type="text" id="editProjectArea" class="border rounded-lg flex-grow p-2" placeholder="Enter area" required>
+                            </div>
+
+                            <!-- Assignees (Dropdown Multiple Select) -->
+                            <div class="mb-4">
+                                <label class="block text-gray-700 mb-2">PIC</label>
+                                <div id="editAssigneeContainer" class="flex flex-wrap items-center gap-2 border p-2 rounded-lg">
+                                    <div id="editSelectedUsers" class="flex flex-wrap gap-2"></div>
+                                    <button id="editAddAssigneeBtn" type="button" class="text-blue-500 hover:text-blue-700">
+        <i class="fas fa-user-plus"></i> Add PIC
+                                </div>
+                                <div id="editAssigneeDropdown" class="hidden mt-2 border rounded-lg shadow-lg bg-white p-2">
+                                    <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 1">User 1</button>
+                                    <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 2">User 2</button>
+                                    <button class="block w-full text-left p-2 hover:bg-gray-200" data-user="User 3">User 3</button>
+                                    <!-- Add more users here -->
+                                </div>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="flex items-center space-x-4">
+                                <label for="editProjectDescription" class="w-1/4 text-gray-700">Description</label>
+                                <textarea id="editProjectDescription" class="border rounded-lg flex-grow p-2" rows="4" placeholder="Enter description" required></textarea>
+                            </div>
+
+
+                            <!-- File Input Section -->
+                            <div id="editFileInputs" class="mb-4 hidden">
+                                <label class="block text-gray-700 mb-2">Upload Document</label>
+                                <input type="file" id="editProjectFiles" class="border rounded-lg w-full p-2" accept=".jpg,.jpeg,.png,.doc,.docx,.pdf">
+                                <div id="existingFiles" class="mt-2">
+                                    <h3 class="text-sm font-semibold">Existing Documents:</h3>
+                                    <ul id="fileList" class="list-disc pl-5">
+                                        <!-- Existing files will be populated here -->
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="flex justify-end space-x-4">
+                                <button type="submit" class="bg-blue-800 hover:bg-blue-600 text-white rounded-lg px-4 py-2">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- Hapus Modal -->
+                <div id="HapusModal" class="fixed inset-0 hidden bg-gray-700 bg-opacity-75 z-50">
+                    <div class="bg-white p-6 rounded-lg shadow-lg w-1/3" style="
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+">
+
+                        <h2 class="text-xl font-semibold mb-4">Konfirmasi Hapus</h2>
+                        <p class="mb-4">Anda yakin ingin menghapus sub project ini?</p>
+                        <div class="flex justify-end">
+                            <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg mr-2" onclick="closeModal('HapusModal')">Batal</button>
+                            <button class="bg-red-500 text-white px-4 py-2 rounded-lg" onclick="closeModal('HapusModal')">Hapus</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <script src="/javascript/sub-project.js">
+                    
+                </script>
+</body>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report</title>
+    <link href="/src/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+
+  <body class="bg-gray-100">
+    <!-- Sidebar -->
+    <div
+      class="fixed top-0 left-0 w-64 h-screen bg-blue-950 text-white flex flex-col items-center py-7 shadow-md z-50"
+    >
+      <div class="relative mb-4">
+        <img
+          alt="Profile picture"
+          class="rounded-full w-24 h-24"
+          src="/gambar/profile.jpg"
+          width="100"
+          height="100"
+        />
+        <a
+          href="profile.html"
+          class="absolute bottom-0 right-0 bg-white rounded-full p-2 flex items-center justify-center w-8 h-8"
+        >
+          <i class="fas fa-pencil-alt text-yellow-600"></i>
+        </a>
+      </div>
+      <div class="text-center mb-8">
+        <p class="text-lg">Nama</p>
+        <p class="text-sm">Email</p>
+      </div>
+      <div class="w-full">
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="dashboard.html"
+        >
+          <i class="fas fa-th-large ml-3"></i>
+          <span class="text-base">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="project.html"
+        >
+          <i class="fas fa-folder ml-3"></i>
+          <span class="text-base">Project</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="activityplan.html"
+        >
+          <i class="fas fa-calendar-check ml-3"></i>
+          <span class="text-base">Activity Plan</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 bg-gray-200 text-gray-800 w-full space-x-4"
+          href="report.html"
+        >
+          <i class="fas fa-file-alt ml-3"></i>
+          <span class="text-base">Report</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="lt_support.html"
+        >
+          <i class="fas fa-clock ml-3"></i>
+          <span class="text-base">Leadtime</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-2 mt-2 hover:bg-blue-700 w-full space-x-4"
+          href="meeting.html"
+        >
+          <i class="fas fa-users ml-3"></i>
+          <span class="text-base">Meeting</span>
+        </a>
+      </div>
+      <div class="mt-auto w-full">
+        <a
+          class="flex items-center px-4 py-2 hover:bg-blue-700 w-full max-w-xs justify-center"
+          href="login.html"
+        >
+          <i class="fas fa-sign-out-alt mr-3"></i>
+          <span>Log Out</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div
+      class="fixed top-0 left-64 right-0 h-20 bg-white shadow-md flex items-center justify-between px-5 z-50"
+    >
+      <img src="/bmi fix/gambar/logobmi.png" alt="BMI Logo" class="h-20" />
+      <div class="flex items-center space-x-5">
+        <a href="listuser.html" class="focus:outline-none">
+          <i class="fas fa-user-plus text-xl"></i>
+        </a>
+        <div class="relative">
+          <button id="notificationButton" class="relative focus:outline-none">
+            <i class="fas fa-bell text-xl"></i>
+
+            <!-- Badge notifikasi -->
+            <span
+              class="absolute top-0 right-0 bg-red-500 text-xs text-white rounded-full w-5 h-5 flex items-center justify-center"
+              >3</span
+            >
+          </button>
+
+          <!-- Dropdown Notifikasi -->
+          <div
+            id="notificationDropdown"
+            class="hidden absolute right-0 mt-2 w-64 bg-white text-gray-700 shadow-lg rounded-lg z-50 max-h-64 overflow-y-auto"
+          >
+            <div class="p-4">
+              <h3 class="font-bold mb-2">Notifikasi</h3>
+              <ul>
+                <li class="py-2 border-b">
+                  Anda baru ditugaskan di
+                  <strong class="text-blue-500">Proyek A</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Proyek <strong class="text-blue-500">B</strong> telah selesai
+                </li>
+                <li class="py-2 border-b">
+                  Tugas di
+                  <strong class="text-blue-500">Proyek C</strong> diperbarui
+                </li>
+                <li class="py-2 border-b">
+                  Pembaruan dalam
+                  <strong class="text-blue-500">Proyek D</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Anda baru ditugaskan di
+                  <strong class="text-blue-500">Proyek E</strong>
+                </li>
+                <li class="py-2 border-b">
+                  Proyek <strong class="text-blue-500">F</strong> selesai tepat
+                  waktu
+                </li>
+                <li class="py-2 border-b">
+                  Tugas di
+                  <strong class="text-blue-500">Proyek G</strong> diperbarui
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <a href="/help" class="focus:outline-none">
+          <i class="fas fa-question-circle text-xl"></i>
+        </a>
+      </div>
+    </div>
+    <!-- Main Content Area -->
+    <div class="ml-64 mt-20 p-6">
+      <div class="flex flex-col">
+        <!-- Page Title -->
+        <h1 class="text-3xl font-bold mb-4">Reports</h1>
+
+        <!-- Main content area -->
+        <div class="flex space-x-8 mt-2">
+          <a
+            href="report.html"
+            class="pb-2 border-b-2 border-blue-600 cursor-pointer"
+            >Activity Report</a
+          >
+          <a href="report2.html" class="pb-2">Project Activity Report</a>
+        </div>
+        <!-- Filters -->
+        <div class="flex items-center space-x-4 mt-5">
+          <select class="px-4 py-1 border rounded-[20px]">
+            <option value="" disabled selected hidden>Kategori</option>
+            <option>Support</option>
+            <option>Troubleshooting</option>
+            <option>Modification</option>
+            <option>Development</option>
+            <option>Training</option>
+            <option>Semua Kategori</option>
+          </select>
+          <select class="px-5 py-1 border rounded-[20px]">
+            <option value="" disabled selected hidden>PIC</option>
+            <option>Lenida</option>
+            <option>Zeva</option>
+            <option>Semua Member</option>
+          </select>
+          <select class="px-5 py-1 border rounded-[20px]">
+            <option value="" disabled selected hidden>Status</option>
+            <option>On Target</option>
+            <option>Out Target</option>
+            <option>Semua Status</option>
+          </select>
+          <input type="date" class="px-5 py-1 border rounded-[20px]" />
+          <input type="date" class="px-5 py-1 border rounded-[20px]" />
+          <button
+            class="px-5 py-1 bg-blue-950 text-white rounded-[20px] hover:bg-blue-600"
+          >
+            Cari
+          </button>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto mt-8">
+          <table class="min-w-full bg-white border">
+            <thead class="bg-gray-100 border-b">
+              <tr>
+                <th class="px-6 py-3 text-center">Category</th>
+                <th class="px-6 py-3 text-center">PIC</th>
+                <th class="px-6 py-3 text-center">Date Request</th>
+                <th class="px-6 py-3 text-center">Requestor</th>
+                <th class="px-6 py-3 text-center">Application</th>
+                <th class="px-6 py-3 text-center">Complexity</th>
+                <th class="px-6 py-3 text-center">Std Leadtime</th>
+                <th class="px-6 py-3 text-center">Actual</th>
+                <th class="px-6 py-3 text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-600 border-t">
+              <!-- Table rows -->
+              <tr>
+                <td class="px-6 py-3 border border-gray-300"></td>
+                <td class="px-6 py-3 border border-gray-300"></td>
+                <td class="px-6 py-3 border border-gray-300"></td>
+                <td class="px-6 py-3 border border-gray-300"></td>
+                <td class="px-6 py-3 border border-gray-300"></td>
+                <td class="px-6 py-3 border border-gray-300"></td>
+                <td class="px-6 py-3 border border-gray-300"></td>
+                <td class="px-6 py-3 border border-gray-300"></td>
+                <td class="px-6 py-3 border border-gray-300"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Grafik -->
+        <div class="flex justify-center mt-8">
+          <div class="bg-white p-4 rounded-lg shadow-lg w-full max-w-4xl">
+            <canvas id="myChart" class="w-full h-auto"></canvas>
+          </div>
+        </div>
+
+        <!-- Print Button -->
+        <button
+          class="block mx-auto mt-6 bg-yellow-600 text-white px-6 py-2 rounded hover:bg-yellow-700"
+        >
+          Print
+        </button>
+      </div>
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/javascript/report.js"></script>
+  </body>
+</html>
