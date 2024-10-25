@@ -1,12 +1,16 @@
 let currentRowIndex = -1; // To keep track of the row being edited
+let currentDeleteButton = null; // To keep track of the delete button
 
+// Function to open the edit modal
 function openEditModal(rowIndex) {
   currentRowIndex = rowIndex; // Set the current row index to the one being edited
   const row = document.querySelectorAll("#projectTableBody tr")[rowIndex];
 
   // Populate modal fields with current row data
   document.getElementById("modalTitle").innerText = "Edit Meeting";
-  document.getElementById("project").value = row.cells[1].textContent; // Update project name
+  document.getElementById("project").value = Array.from(
+    document.getElementById("project").options
+  ).find((option) => option.text === row.cells[1].textContent).value; // Update project value
 
   // Get users from the selected row
   const users = row.cells[2].textContent.split(", "); // Split users into an array
@@ -25,6 +29,7 @@ function openEditModal(rowIndex) {
   openModal(); // Open the modal
 }
 
+// Function to save meeting details
 function saveMeeting() {
   const projectSelect = document.getElementById("project");
   const projectText = projectSelect.options[projectSelect.selectedIndex].text; // Get selected project name
@@ -55,7 +60,7 @@ function saveMeeting() {
             <i class="fas fa-edit text-blue-500 cursor-pointer" onclick="openEditModal(${
               tableBody.children.length
             })"></i>
-            <i class="fas fa-trash-alt text-red-500 cursor-pointer" onclick="deleteRow(this)"></i>
+            <i class="fas fa-trash-alt text-red-500 cursor-pointer" onclick="openHapusModal(this)"></i>
         </td>
     `;
     tableBody.appendChild(newRow);
@@ -123,11 +128,32 @@ function updateUsers() {
   }
 }
 
-// Delete row
-function deleteRow(button) {
-  const row = button.closest("tr");
-  row.parentNode.removeChild(row);
+// Delete row with confirmation modal
+function openHapusModal(button) {
+  currentDeleteButton = button; // Store the delete button that triggered the modal
+  document.getElementById("HapusModal").classList.remove("hidden");
 }
+
+// Close the delete confirmation modal
+function closeHapusModal(event) {
+  if (event) {
+    event.stopPropagation(); // Stop propagation if needed
+  }
+  document.getElementById("HapusModal").classList.add("hidden");
+  currentDeleteButton = null; // Reset the reference
+}
+
+// Confirm deletion
+document
+  .getElementById("confirmDeleteButton")
+  .addEventListener("click", function () {
+    if (currentDeleteButton) {
+      // Find the table row containing the delete button
+      const row = currentDeleteButton.closest("tr");
+      row.remove(); // Remove the row from the table
+      closeHapusModal(); // Close the modal after deletion
+    }
+  });
 
 // Filter function
 function filterTable() {
@@ -154,35 +180,9 @@ function filterTable() {
       (searchUser === "" || user.includes(searchUser)) &&
       (searchDate === "" || date.includes(searchDate))
     ) {
-      rows[i].style.display = "";
+      rows[i].style.display = ""; // Show row
     } else {
-      rows[i].style.display = "none";
+      rows[i].style.display = "none"; // Hide row
     }
   }
-}
-function openEditModal(rowIndex) {
-  currentRowIndex = rowIndex; // Set the current row index to the one being edited
-  const row = document.querySelectorAll("#projectTableBody tr")[rowIndex];
-
-  // Populate modal fields with current row data
-  document.getElementById("modalTitle").innerText = "Edit Meeting";
-  document.getElementById("project").value = Array.from(
-    document.getElementById("project").options
-  ).find((option) => option.text === row.cells[1].textContent).value; // Update project value
-
-  // Get users from the selected row
-  const users = row.cells[2].textContent.split(", "); // Split users into an array
-  updateUsers(); // Populate users
-
-  // Check the appropriate user checkboxes
-  const checkboxes = document.querySelectorAll("#userCheckboxes input");
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = users.includes(checkbox.value); // Mark checkbox as checked if user is in the list
-  });
-
-  document.getElementById("date").value = row.cells[3].textContent; // Update date
-  document.getElementById("startTime").value = row.cells[4].textContent; // Update start time
-  document.getElementById("keterangan").value = row.cells[5].textContent; // Update description
-
-  openModal(); // Open the modal
 }
